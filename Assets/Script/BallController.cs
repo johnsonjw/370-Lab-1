@@ -9,10 +9,12 @@ public class BallController : MonoBehaviour
     public float angularBrakeStrength;
     public Rigidbody rb;
     private bool playerControl;
+    private bool gameStarted;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        gameStarted = false;
         playerControl = false;
     }
 
@@ -21,7 +23,12 @@ public class BallController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            playerControl = true;
+            if(!gameStarted)
+            {
+                gameStarted=true;
+                playerControl = true;
+            }
+           
         }
 
         //Handling player input
@@ -33,9 +40,10 @@ public class BallController : MonoBehaviour
                 parseBraking(brakeStrength, angularBrakeStrength);
             }
         }
-        else
+        else if(!gameStarted)
         {
             freezeBall();
+            rb.position = new Vector3(rb.position.x, 40, rb.position.z);
         }
     }
 

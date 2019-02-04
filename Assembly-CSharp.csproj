@@ -61,6 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Script\BallController.cs" />
+    <Compile Include="Assets\Script\ScoringScript.cs" />
     <Compile Include="Assets\Script\TopDownCamV2.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>K:/Documents/GitHub/370-Lab-1v3/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
