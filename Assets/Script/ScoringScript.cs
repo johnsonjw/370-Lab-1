@@ -19,7 +19,7 @@ public class ScoringScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        scoreText.text = score + "";
+        scoreText.text = player.getPoints() + "";
         if (Input.GetKeyDown(KeyCode.Space) && !gameStarted)
         {
             gameStarted = true;

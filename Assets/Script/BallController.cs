@@ -8,17 +8,18 @@ public class BallController : MonoBehaviour
     public float brakeStrength;
     public float angularBrakeStrength;
     public Rigidbody rb;
+
     private bool playerControl;
     private bool gameStarted;
-    private bool hasLanded;
-    private Collision lastCollision = new Collision();
+    private int points;
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         gameStarted = false;
         playerControl = false;
-        hasLanded = false;
+        points = 0;
     }
 
     // Update is called once per frame
@@ -52,18 +53,42 @@ public class BallController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        lastCollision = collision;
+        scoreCollision(collision);
     }
 
     private void OnCollisionStay(Collision collision)
     {
         if (collision.collider.tag == "goal")
         {
-            freezeBall();
-            playerControl = false;
+            finishLevel();
         }
     }
 
+    public int getPoints()
+    {
+        return points;
+    }
+
+    private void scoreCollision(Collision collision)
+    {
+        if (collision.collider.tag == "5Points")
+        {
+            points += 5;
+        }
+        if (collision.collider.tag == "10Points")
+        {
+            points += 10;
+        }
+        if (collision.collider.tag == "50Points")
+        {
+            points += 50;
+        }
+    }
+    private void finishLevel()
+    {
+        freezeBall();
+        playerControl = false;
+    }
     private void freezeBall()
     {
         rb.velocity = rb.velocity * 0;
