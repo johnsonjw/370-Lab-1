@@ -6,7 +6,6 @@ public class TopDownCamV2 : MonoBehaviour
 {
     public GameObject player;
     private Vector3 distance;
-    private float smooth = 0.5f;
     // Start is called before the first frame update
     void Start()
     {
