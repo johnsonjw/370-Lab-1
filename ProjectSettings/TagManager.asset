@@ -6,6 +6,8 @@ TagManager:
   tags:
   - goal
   - 10Points
+  - 5Points
+  - 50Points
   layers:
   - Default
   - TransparentFX
