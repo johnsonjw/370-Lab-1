@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ScoringScript : MonoBehaviour
 {
-    public Rigidbody player;
+    public BallController player;
     public TextMesh scoreText;
     public TextMesh status;
     private bool gameStarted;
@@ -24,6 +24,6 @@ public class ScoringScript : MonoBehaviour
         {
             gameStarted = true;
             status.text = "WASD to move, space to slow down.";
-        }
+        }        
     }
 }

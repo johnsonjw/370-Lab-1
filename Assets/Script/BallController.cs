@@ -10,12 +10,15 @@ public class BallController : MonoBehaviour
     public Rigidbody rb;
     private bool playerControl;
     private bool gameStarted;
+    private bool hasLanded;
+    private Collision lastCollision = new Collision();
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         gameStarted = false;
         playerControl = false;
+        hasLanded = false;
     }
 
     // Update is called once per frame
@@ -45,6 +48,11 @@ public class BallController : MonoBehaviour
             freezeBall();
             rb.position = new Vector3(rb.position.x, 40, rb.position.z);
         }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        lastCollision = collision;
     }
 
     private void OnCollisionStay(Collision collision)
