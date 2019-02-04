@@ -33,9 +33,13 @@ public class BallController : MonoBehaviour
                 parseBraking(brakeStrength, angularBrakeStrength);
             }
         }
+        else
+        {
+            freezeBall();
+        }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionStay(Collision collision)
     {
         if (collision.collider.tag == "goal")
         {
