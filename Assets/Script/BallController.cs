@@ -68,6 +68,14 @@ public class BallController : MonoBehaviour
     {
         return points;
     }
+    public bool getGameStarted()
+    {
+        return gameStarted;
+    }
+    public bool getPlayerControl()
+    {
+        return playerControl;
+    }
 
     private void scoreCollision(Collision collision)
     {
