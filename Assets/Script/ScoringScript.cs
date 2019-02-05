@@ -8,12 +8,13 @@ public class ScoringScript : MonoBehaviour
     public TextMesh scoreText;
     public TextMesh status;
     public int pointsPerSecond;
+    public int maxTime;
 
     private float timeToFinish;
     private float startTime;
     private bool gameStarted;
     private bool gameOver;
-    private float score;
+    private int score;
     // Start is called before the first frame update
     void Start()
     {
@@ -38,21 +39,23 @@ public class ScoringScript : MonoBehaviour
             if (gameEnded())
             {
                 gameOver = true;
-                status.text = "Level complete!";
+                status.text = "Level complete!" ;
                 score = calculateFinalScore();
+                scoreText.text = score + "";
             } else
             {
                 score = player.getPoints();
+                scoreText.text = score + "";
             }
-            scoreText.text = score + "";
         }
     }
 
-    private float calculateFinalScore()
+    private int calculateFinalScore()
     {
-        float finalScore = 0;
+        int finalScore = 0;
         timeToFinish = Time.time - startTime;
-        finalScore = score + (timeToFinish * pointsPerSecond); 
+        finalScore = score + (maxTime-Mathf.RoundToInt(timeToFinish))*pointsPerSecond;
+        status.text = status.text + " Time: " + Mathf.RoundToInt(timeToFinish);
         return finalScore;
     }
 
